@@ -450,6 +450,7 @@ namespace VF.Model.Feature {
     [Serializable]
     public class SecurityLock : NewFeatureModel {
         public string pinNumber;
+        public bool saved;
     }
 
     [Serializable]

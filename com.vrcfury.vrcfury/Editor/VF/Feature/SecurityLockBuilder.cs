@@ -39,7 +39,7 @@ public class SecurityLockBuilder : FeatureBuilder<SecurityLock> {
         var numDigits = digits.Length;
         var numDigitSlots = 10;
 
-        var paramSecuritySync = GetFx().NewBool("SecurityLockSync", synced: true);
+        var paramSecuritySync = GetFx().NewBool("SecurityLockSync", synced: true, saved: model.saved);
         // This doesn't actually need synced, but vrc gets annoyed that the menu is using an unsynced param
         var paramInput = fx.NewInt("SecurityInput", synced: true, networkSynced: false);
         
@@ -120,6 +120,7 @@ public class SecurityLockBuilder : FeatureBuilder<SecurityLock> {
             "* All objects with a VRCFury Security Restricted component will be disabled.\n" +
             "* All VRCFury Toggles marked with the `Security` flag will be forced Off."));
         content.Add(VRCFuryEditorUtils.Prop(prop.FindPropertyRelative("pinNumber"), "Pin Number (min 4 digits, max 10 digits, can only use numbers 1-7)"));
+        content.Add(VRCFuryEditorUtils.Prop(prop.FindPropertyRelative("saved"), "Saved Between Worlds"));
         return content;
     }
     
